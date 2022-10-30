@@ -61,22 +61,22 @@ app.get('/students', function(req, res){
     Student.findAll(data)
     .then(function(results){
         res.send(results);
-    }, contentLogger)
+    })
     .catch(function(err){
         res.send(err);
     });
-});
+}, contentLogger);
 
 
 app.post('/students', function(req, res){
     Student.create(req.body)
     .then(function(result){
         res.status(200).send(result);
-    }, contentLogger)
+    })
     .catch(function(err){
         res.status(500).send(err);
     });
-})
+}, contentLogger)
 
 
 app.patch('/students/:student_id', function(req, res){
@@ -100,11 +100,11 @@ app.patch('/students/:student_id', function(req, res){
         }else{
             res.status(404).send('Student record was not found');
         }
-    }, contentLogger)
+    })
     .catch(function(err){
         res.status(500).send(err);
     });
-});
+}, contentLogger);
 
 
 app.delete('/students/:student_id', function(req, res){
@@ -117,7 +117,7 @@ app.delete('/students/:student_id', function(req, res){
             result.destroy()
             .then(function(){
                 res.status(200).send(result);
-            }, contentLogger)
+            })
             .catch(function(err){
                 res.status(500).send(err);
             });
@@ -128,7 +128,7 @@ app.delete('/students/:student_id', function(req, res){
     .catch(function(err){
         res.status(500).send(err);
     });
-});
+}, contentLogger);
 
 
 app.listen(3000, function(){
