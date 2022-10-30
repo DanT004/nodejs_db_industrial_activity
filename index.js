@@ -7,29 +7,32 @@ app.use(express.urlencoded({extended: false}));
 
 
 app.use(contentLogger);
-let totalRequests = 0;
+let total_GET_requests = 0;
+let total_POST_requests = 0;
+let total_PATCH_requests = 0;
+let total_DELETE_requests = 0;
 
 function contentLogger(req, res, next){
     
     if (req.method === "GET"){
-        totalRequests++
+        total_GET_requests++
         console.log('Method: GET')
-        console.log('Total Request: ' + totalRequests);
+        console.log('Total Request: ' + 'GET: ' + total_GET_requests + ' POST: ' + total_POST_requests + ' PATCH: ' + total_PATCH_requests + ' DELETE: ' + total_DELETE_requests);
     }
     else if (req.method === "POST"){
-        totalRequests++
+        total_POST_requests++
         console.log('Method: POST')
-        console.log('Total Request: ' +  totalRequests);
+        console.log('Total Request: ' +  'GET: ' + total_GET_requests + ' POST: ' + total_POST_requests + ' PATCH: ' + total_PATCH_requests + ' DELETE: ' + total_DELETE_requests);
     }
     else if (req.method === "PATCH"){
-        totalRequests++
+        total_PATCH_requests++
         console.log('Method: PATCH')
-        console.log('Total Request: ' +  totalRequests);
+        console.log('Total Request: ' +  'GET: ' + total_GET_requests + ' POST: ' + total_POST_requests + ' PATCH: ' + total_PATCH_requests + ' DELETE: ' + total_DELETE_requests);
     }
     else if (req.method === "DELETE"){
-        totalRequests++
+        total_DELETE_requests++
         console.log('Method: DELETE')
-        console.log('Total Request: ' +  totalRequests);
+        console.log('Total Request: ' +  'GET: ' + total_GET_requests + ' POST: ' + total_POST_requests + ' PATCH: ' + total_PATCH_requests + ' DELETE: ' + total_DELETE_requests);
     }
     next();
 };
@@ -50,10 +53,11 @@ app.get('/students', function(req, res){
     let data = {
         where: {},
     }
-
+    
     if(req.query.id !== undefined){
         data.where.id = req.query.id;
     }
+
     if(req.query.section !== undefined){
         data.where.section = req.query.section;
     }
