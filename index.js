@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const chalk = require('chalk');
 const config = require('./config');
 const Student = require('./models/Student');
 
@@ -16,23 +17,23 @@ function contentLogger(req, res, next){
     
     if (req.method === "GET"){
         total_GET_requests++
-        console.log('Method: GET')
-        console.log('Total Request: ' + 'GET: ' + total_GET_requests + ' POST: ' + total_POST_requests + ' PATCH: ' + total_PATCH_requests + ' DELETE: ' + total_DELETE_requests);
+        console.log(chalk.green('Method: GET'));
+        console.log(chalk.yellow('Total Request: ' + chalk.blue('GET: ' + total_GET_requests) + ' POST: ' + total_POST_requests + ' PATCH: ' + total_PATCH_requests + ' DELETE: ' + total_DELETE_requests));
     }
     else if (req.method === "POST"){
         total_POST_requests++
-        console.log('Method: POST')
-        console.log('Total Request: ' +  'GET: ' + total_GET_requests + ' POST: ' + total_POST_requests + ' PATCH: ' + total_PATCH_requests + ' DELETE: ' + total_DELETE_requests);
+        console.log(chalk.green('Method: POST'));
+        console.log(chalk.yellow('Total Request: ' +  'GET: ' + total_GET_requests + chalk.blue(' POST: ' + total_POST_requests) + ' PATCH: ' + total_PATCH_requests + ' DELETE: ' + total_DELETE_requests));
     }
     else if (req.method === "PATCH"){
         total_PATCH_requests++
-        console.log('Method: PATCH')
-        console.log('Total Request: ' +  'GET: ' + total_GET_requests + ' POST: ' + total_POST_requests + ' PATCH: ' + total_PATCH_requests + ' DELETE: ' + total_DELETE_requests);
+        console.log(chalk.green('Method: PATCH'));
+        console.log(chalk.yellow('Total Request: ' +  'GET: ' + total_GET_requests + ' POST: ' + total_POST_requests + chalk.blue(' PATCH: ' + total_PATCH_requests) + ' DELETE: ' + total_DELETE_requests));
     }
     else if (req.method === "DELETE"){
         total_DELETE_requests++
-        console.log('Method: DELETE')
-        console.log('Total Request: ' +  'GET: ' + total_GET_requests + ' POST: ' + total_POST_requests + ' PATCH: ' + total_PATCH_requests + ' DELETE: ' + total_DELETE_requests);
+        console.log(chalk.green('Method: DELETE'));
+        console.log(chalk.yellow('Total Request: ' +  'GET: ' + total_GET_requests + ' POST: ' + total_POST_requests + ' PATCH: ' + total_PATCH_requests + chalk.blue(' DELETE: ' + total_DELETE_requests)));
     }
     next();
 };
