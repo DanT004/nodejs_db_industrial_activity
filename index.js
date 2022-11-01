@@ -32,7 +32,7 @@ function contentLogger(req, res, next){
     }
     else if (req.method === "DELETE"){
         total_DELETE_requests++
-        console.log(chalk.green('Method: DELETE'));
+        console.log(chalk.red('Method: DELETE'));
         console.log(chalk.yellow('Total Request: ' +  'GET: ' + total_GET_requests + ' POST: ' + total_POST_requests + ' PATCH: ' + total_PATCH_requests + chalk.blue(' DELETE: ' + total_DELETE_requests)));
     }
     next();
