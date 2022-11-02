@@ -90,11 +90,9 @@ app.patch('/students/:student_id', function(req, res){
     Student.findByPk(student_id)
     .then(function(result){
         if(result){
-            result.name = req.body.name,
             result.section = req.body.section,
             result.gpa = req.body.gpa,
-            result.nationality = req.body.nationality;
-
+            
             result.save()
             .then(function(){
                 res.status(200).send(result);
