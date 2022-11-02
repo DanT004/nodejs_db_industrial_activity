@@ -70,7 +70,7 @@ app.get('/students', function(req, res){
     .catch(function(err){
         res.send(err);
     });
-}, contentLogger);
+});
 
 
 app.post('/students', function(req, res){
@@ -81,7 +81,7 @@ app.post('/students', function(req, res){
     .catch(function(err){
         res.status(500).send(err);
     });
-}, contentLogger)
+})
 
 
 app.patch('/students/:student_id', function(req, res){
@@ -107,7 +107,7 @@ app.patch('/students/:student_id', function(req, res){
     .catch(function(err){
         res.status(500).send(err);
     });
-}, contentLogger);
+});
 
 
 app.delete('/students/:student_id', function(req, res){
@@ -131,7 +131,7 @@ app.delete('/students/:student_id', function(req, res){
     .catch(function(err){
         res.status(500).send(err);
     });
-}, contentLogger);
+});
 
 
 app.listen(3000, function(){
